@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raio-X da Tecnologia e Inovação em Goiás</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A; /* slate-900 */
+            color: #E2E8F0; /* slate-200 */
+        }
+        .section-title {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 800; /* font-extrabold */
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .section-subtitle {
+            font-size: 1.125rem; /* text-lg */
+            color: #94A3B8; /* slate-400 */
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .stat-card {
+            background-color: #1E293B; /* slate-800 */
+            border: 1px solid #334155; /* slate-700 */
+            border-radius: 1rem; /* rounded-2xl */
+            padding: 1.5rem; /* p-6 */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .stat-number {
+            font-size: 3rem; /* text-5xl */
+            font-weight: 900; /* font-black */
+            color: #22D3EE; /* cyan-400 */
+        }
+        .stat-label {
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            color: #fff;
+            margin-top: 0.5rem;
+        }
+        .stat-source {
+            font-size: 0.75rem; /* text-xs */
+            color: #64748B; /* slate-500 */
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        .stat-insight {
+            font-size: 0.875rem; /* text-sm */
+            color: #A5F3FC; /* cyan-100 */
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background-color: #0F172A; /* slate-900 */
+            border-radius: 0.5rem; /* rounded-lg */
+            border-left: 4px solid #22D3EE; /* border-cyan-400 */
+        }
+        .accordion-item summary {
+            cursor: pointer;
+            padding: 1rem;
+            background-color: #1E293B; /* slate-800 */
+            border-radius: 0.5rem;
+            font-weight: 600;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-item summary:hover {
+            background-color: #334155; /* slate-700 */
+        }
+        .accordion-item[open] summary {
+            background-color: #334155; /* slate-700 */
+        }
+        .accordion-content {
+            padding: 1rem;
+            background-color: #0F172A; /* slate-900 */
+            border: 1px solid #334155; /* slate-700 */
+            border-top: 0;
+            border-radius: 0 0 0.5rem 0.5rem;
+        }
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px; /* rounded-full */
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .filter-btn-inactive {
+            background-color: #334155; /* slate-700 */
+            color: #E2E8F0; /* slate-200 */
+        }
+        .filter-btn-inactive:hover {
+            background-color: #475569; /* slate-600 */
+        }
+        .filter-btn-active {
+            background-color: #22D3EE; /* cyan-400 */
+            color: #0F172A; /* slate-900 */
+            border-color: #22D3EE; /* cyan-400 */
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+        }
+
+        /* Estilo para Matriz 2x2 */
+        .matrix-grid {
+            grid-template-areas:
+                "quadrant1 quadrant2"
+                "quadrant3 quadrant4";
+        }
+        .matrix-quadrant {
+            background-color: #1e293b; /* slate-800 */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            border: 1px solid #334155; /* slate-700 */
+        }
+        .matrix-quadrant:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-color: #22D3EE; /* cyan-400 */
+        }
+        .matrix-quadrant h4 {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 0.5rem;
+        }
+        .matrix-quadrant p {
+            font-size: 0.875rem; /* text-sm */
+            color: #CBD5E1; /* slate-300 */
+        }
+        .axis-label {
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 600; /* font-semibold */
+            color: #94A3B8; /* slate-400 */
+            text-transform: uppercase;
+        }
+
+        /* Estilo para o accordion dentro do card */
+        .stat-card .accordion-item summary {
+            padding: 0.75rem; /* p-3 */
+            background-color: #0F172A; /* slate-900 */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .stat-card .accordion-item summary:hover {
+            background-color: #334155; /* slate-700 */
+        }
+        .stat-card .accordion-content {
+            padding: 0.75rem; /* p-3 */
+            padding-top: 0.5rem; /* pt-2 */
+            background-color: #0F172A; /* slate-900 */
+            border: none;
+        }
+
+
+        /* Cursor interativo para o gráfico de investimento */
+        #investmentChart {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 p-4 md:p-8">
+
+    <!-- Cabeçalho -->
+    <header class="text-center mb-16 mt-8">
+        <h1 class="text-4xl md:text-6xl font-black text-white mb-4">
+            Raio-X da Tecnologia e Inovação em Goiás
+        </h1>
+        <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">
+            Uma análise profunda e didática sobre o presente e o futuro da inovação no estado, combinando dados atuais e metodologias de foresight (antecipação).
+        </p>
+    </header>
+
+    <main class="max-w-7xl mx-auto">
+
+        <!-- === SEÇÃO 1: GOIÁS EM NÚMEROS === -->
+        <section class="mb-12 md:mb-16">
+            <h2 class="section-title">Goiás em Números: Onde Estamos?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                
+                <!-- Card 1: Startups -->
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-number">300+</div>
+                        <div class="stat-label">Startups Ativas (Validadas)</div>
+                        <div class="stat-source">Fonte: Mapeamento Ecossistema (Ex: Startup Central) | Período: 2024</div>
+                    </div>
+                    <div class="stat-insight">
+                        <strong>Insight:</strong> O desafio é transformar <em>quantidade</em> em <em>qualidade</em>, ajudando essas startups a crescer e gerar empresas de maior valor.
+                    </div>
+                </div>
+
+                <!-- Card 2: Faturamento -->
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-number">R$ 2,5 Bi</div>
+                        <div class="stat-label">Faturamento do Setor (Estimado)</div>
+                        <div class="stat-source">Fonte: Estimativa baseada no PIB de T&I (IBGE/SECTI) | Período: 2023</div>
+                    </div>
+                    <div class="stat-insight">
+                        <strong>Insight:</strong> As startups já movimentam uma fatia relevante da economia, mostrando que inovação dá resultado financeiro e gera empregos.
+                    </div>
+                </div>
+
+                <!-- Card 3: Parques Tecnológicos -->
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Parques Tecnológicos (Em Implantação)</div>
+                        <div class="stat-source">Fonte: Secretaria de C,T&I (SECTI Goiás) | Período: 2024</div>
+                        
+                        <!-- MODIFICADO: Lista dos Parques (Accordion) com mais detalhes -->
+                        <details class="accordion-item bg-slate-900/50 rounded-lg mt-4 text-sm open:ring-1 open:ring-cyan-400 transition-all">
+                            <summary class="text-sm font-semibold text-white hover:text-cyan-300">Quais são os 5 Polos?</summary>
+                            <ul class="text-slate-300 space-y-2 accordion-content text-xs">
+                                <li>
+                                    <strong class="text-white">Goiânia (Samambaia/UFG):</strong> Foco principal em TICs (Software), Bioeconomia e Saúde. Em fase de estruturação e atração de empresas-âncora.
+                                </li>
+                                <li>
+                                    <strong class="text-white">Anápolis (Gov/Prefeitura):</strong> Foco natural em Farma, Saúde (HealthTechs) e Logística (LogTechs), alavancado pelo DAIA e Porto Seco.
+                                </li>
+                                <li>
+                                    <strong class="text-white">Rio Verde (Sudoeste):</strong> Vocação clara para AgTechs (Agricultura de Precisão, Biotecnologia) e Finanças do Agro.
+                                </li>
+                                <li>
+                                    <strong class="text-white">Catalão (Sudeste/UFCAT):</strong> Foco em Mineração, Indústria 4.0 e Logística, conectado às grandes indústrias da região.
+                                </li>
+                                <li>
+                                    <strong class="text-white">Jataí (Sudoeste/UFJ):</strong> Também focado em AgTechs, mas com forte viés em Bioenergia e Sustentabilidade no campo.
+                                </li>
+                            </ul>
+                        </details>
+                        <!-- Fim da Modificação -->
+
+                    </div>
+                    <div class="stat-insight">
+                        <strong>Insight:</strong> Os Parques são a "casa" da inovação. Concluí-los é vital para conectar universidades, empresas e atrair talentos.
+                    </div>
+                </div>
+
+                <!-- Card 4: AgTechs -->
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-number">1º</div>
+                        <div class="stat-label">Lugar Nacional em AgTechs (Proporcional)</div>
+                        <div class="stat-source">Fonte: Radar AgTech Brasil (Embrapa) | Período: 2023</div>
+                    </div>
+                    <div class="stat-insight">
+                        <strong>Insight:</strong> Goiás usa sua força mundial no Agronegócio para ser um líder natural em AgTechs (tecnologias para o campo).
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SEÇÃO 2: POSICIONAMENTO NO RADAR === -->
+        <section class="mb-12 md:mb-16">
+            <h2 class="section-title">Goiás no Mapa da Inovação do Brasil</h2>
+            <div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    
+                    <!-- Coluna 1: O Ranking -->
+                    <div class="md:col-span-1 text-center md:text-left">
+                        <div class="inline-block bg-cyan-500/10 p-4 rounded-xl">
+                            <div class="text-6xl md:text-7xl font-extrabold text-cyan-400">10ª</div>
+                        </div>
+                        <div class="mt-2">
+                            <div class="text-2xl font-bold text-white">Posição Nacional</div>
+                            <div class="text-lg font-semibold text-emerald-400">Avanço de 2 posições (vs. 2023)</div>
+                        </div>
+                    </div>
+
+                    <!-- Coluna 2: Critérios -->
+                    <div class="md:col-span-2">
+                        <h3 class="text-xl font-semibold text-white mb-3">O que define a posição no Ranking?</h3>
+                        <ul class="list-disc list-inside space-y-2 text-slate-300">
+                            <li><strong>Capacidade de Inovação:</strong> Investimento em Pesquisa (P&D), número de Startups.</li>
+                            <li><strong>Capital Humano:</strong> Nº de Mestres e Doutores, qualidade das universidades.</li>
+                            <li><strong>Infraestrutura:</strong> Conectividade (Internet), Parques Tecnológicos.</li>
+                        </ul>
+                        <p class="text-xs text-slate-500 mt-4 text-right">Fonte: Ranking de Competitividade dos Estados (CLP) | Período: 2024</p>
+                    </div>
+                </div>
+
+                <!-- Gráfico Top 15 Estados -->
+                <div class="mt-8 pt-6 border-t border-slate-700">
+                    <h3 class="text-xl font-semibold text-white mb-4 text-center">Top 15 Estados no Pilar "Inovação"</h3>
+                    <div class="h-96 w-full">
+                        <canvas id="rankingChart"></canvas>
+                    </div>
+                    <p class="text-sm text-slate-400 text-center mt-4">
+                        <strong>Legenda:</strong> O gráfico mostra a pontuação (0-100) dos 15 estados mais bem classificados no pilar "Inovação". Goiás está destacado em Ciano.
+                    </p>
+                </div>
+
+                <!-- Análise Estratégica -->
+                <div class="mt-8 pt-6 border-t border-slate-700">
+                    <div class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400">
+                        <h4 class="text-sm font-semibold text-cyan-300 mb-1 uppercase tracking-wider">Análise Estratégica</h4>
+                        <p id="insightRanking" class="text-slate-200 text-base italic">
+                            O avanço de 2 posições mostra que os investimentos em infraestrutura (Parques Tec.) e fomento (FAPEG/SECTI) estão dando resultado. Goiás sai da "zona de esforço" para a "zona de consolidação". O desafio agora é converter pesquisa (P&D) em produtos e patentes de alto valor para buscar o Top 8 nacional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SEÇÃO 3: DISTRIBUIÇÃO INTERATIVA DO ECOSSISTEMA === -->
+        <section class="mb-12 md:mb-16">
+            <h2 class="section-title">Onde Estão as Startups? (Mapa Interativo)</h2>
+            <div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700">
+                <!-- Filtros Interativos -->
+                <div class="flex flex-wrap justify-center gap-3 mb-8">
+                    <button id="btn-total" class="filter-btn filter-btn-active">Total Goiás</button>
+                    <button id="btn-gyn" class="filter-btn filter-btn-inactive">Goiânia</button>
+                    <button id="btn-aps" class="filter-btn filter-btn-inactive">Anápolis</button>
+                    <button id="btn-rv" class="filter-btn filter-btn-inactive">Rio Verde</button>
+                </div>
+
+                <!-- Gráfico e Insight -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Gráfico de Rosca -->
+                    <div>
+                        <div class="h-80 w-full">
+                            <canvas id="distributionChart"></canvas>
+                        </div>
+                        <!-- Legenda Explicativa -->
+                        <p class="text-sm text-slate-400 text-center mt-4">
+                            <strong>Legenda:</strong> O gráfico mostra a % de startups por setor. Use os filtros acima para ver a especialização de cada polo.
+                        </p>
+                    </div>
+
+                    <!-- Insight Dinâmico -->
+                    <div class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400">
+                        <h4 id="insight-title" class="text-sm font-semibold text-cyan-300 mb-1 uppercase tracking-wider">Análise Estratégica: Total Goiás</h4>
+                        <p id="insight-text" class="text-slate-200 text-base italic">
+                            A maioria das startups ainda está na capital, o que é natural. No entanto, o gráfico mostra como o interior avança rápido, especialmente em setores ligados à vocação regional (AgTechs em Rio Verde e Logística/Saúde em Anápolis).
+                        </p>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 mt-4 text-right">Fonte: Mapeamentos Regionais (Startup Central, Hub Gyn, Polos de Inovação) | Período: 2023-2024</p>
+            </div>
+        </section>
+
+        <!-- === SEÇÃO 4: O MOTOR DE INVESTIMENTO === -->
+        <section class="mb-12 md:mb-16">
+            <h2 class="section-title">Quem Financia a Inovação? (Investimento)</h2>
+            <div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700">
+                <div class="h-96 w-full">
+                    <canvas id="investmentChart"></canvas>
+                </div>
+                <!-- Legenda Explicativa -->
+                <p class="text-sm text-slate-400 text-center mt-6">
+                    <strong>Legenda:</strong> O gráfico compara o crescimento do investimento público (fomento) vs. privado (risco) em T&I em Goiás. Valores em Milhões de R$.
+                </p>
+
+                <!-- Seção Interativa de Fontes de Financiamento -->
+                <div class="mt-6 pt-6 border-t border-slate-700">
+                    <!-- Card Padrão -->
+                    <div id="info-default" class="p-4 bg-slate-900 rounded-lg border-l-4 border-slate-500">
+                        <h4 class="text-sm font-semibold text-slate-300 mb-1 uppercase tracking-wider">Clique nas Barras</h4>
+                        <p class="text-slate-200 text-base italic">
+                            Clique em uma das barras (Pública ou Privada) no gráfico acima para ver as principais fontes de financiamento de cada categoria.
+                        </p>
+                    </div>
+
+                    <!-- Card Investimento Público (Oculto) -->
+                    <div id="info-publico" class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400 hidden">
+                        <h4 class="text-sm font-semibold text-cyan-300 mb-2 uppercase tracking-wider">Principais Fontes: Investimento Público</h4>
+                        <ul class="list-disc list-inside text-slate-300 space-y-1">
+                            <li><strong>FAPEG (Fundação de Amparo à Pesquisa):</strong> Principal agência de fomento, com editais (Centelha, Tecnova) para P&D e startups.</li>
+                            <li><strong>SECTI (Secretaria de C,T&I):</strong> Gestora dos Parques Tecnológicos e programas de bolsas (ex: Include).</li>
+                            <li><strong>Finep (Federal):</strong> Financiamento para inovação em empresas (muitas vezes em parceria com a FAPEG).</li>
+                            <li><strong>GoiásFomento:</strong> Linhas de crédito com juros baixos para empresas inovadoras.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card Investimento Privado (Oculto) -->
+                    <div id="info-privado" class="p-4 bg-slate-900 rounded-lg border-l-4 border-emerald-400 hidden">
+                        <h4 class="text-sm font-semibold text-emerald-300 mb-2 uppercase tracking-wider">Principais Fontes: Investimento Privado</h4>
+                        <ul class="list-disc list-inside text-slate-300 space-y-1">
+                            <li><strong>Investidores-Anjo:</strong> Pessoas físicas que investem capital semente (ex: Anjos do Brasil - GO).</li>
+                            <li><strong>Fundos de Venture Capital (VCs):</strong> Fundos (maioria de SP/MG) que investem em startups goianas para escalar.</li>
+                            <li><strong>Corporate Venture (CVC):</strong> Grandes empresas (ex: do Agro) que investem em startups que resolvem seus problemas.</li>
+                            <li><strong>Aceleradoras:</strong> Organizações que investem capital, mentoria e infraestrutura (ex: Cotidiano).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Insight Estratégico (Original) -->
+                <div class="mt-6 pt-6 border-t border-slate-700">
+                    <div class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400">
+                        <h4 class="text-sm font-semibold text-cyan-300 mb-1 uppercase tracking-wider">Análise Estratégica</h4>
+                        <p class="text-slate-200 text-base italic">
+                            O investimento público (FAPEG, SECTI) funciona como "semente": ele prepara o terreno e reduz o risco. Isso é essencial para atrair o capital privado (Investidores-Anjo e VCs), que é quem realmente faz as startups "explodirem" em crescimento. Um não vive sem o outro.
+                        </p>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 mt-4 text-right">Fonte: FAPEG (Editais) e Mapeamento de Investimentos (Distrito/Abstartups) | Período: 2022-2024</p>
+            </div>
+        </section>
+
+        <!-- === SEÇÃO 5: DESAFIOS & OPORTUNIDADES (SWOT) === -->
+        <section class="mb-12 md:mb-16">
+            <h2 class="section-title">Desafios & Oportunidades (Análise SWOT)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <!-- Forças (Strengths) -->
+                <div class="bg-slate-800 p-6 rounded-2xl border-2 border-emerald-500/50">
+                    <h3 class="text-2xl font-bold text-emerald-300 mb-4">FORÇAS (O que temos de bom)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300">
+                        <li><strong>Vocação Econômica Clara:</strong> Potência em Agro, Saúde (Farma) e Logística.</li>
+                        <li><strong>Apoio Governamental:</strong> Programas ativos (FAPEG, SECTI) e Parques Tec.</li>
+                        <li><strong>Localização Estratégica:</strong> Hub logístico natural no centro do país.</li>
+                        <li><strong>Ecossistema em Expansão:</strong> Aumento rápido no número de startups e eventos.</li>
+                    </ul>
+                </div>
+                <!-- Fraquezas (Weaknesses) -->
+                <div class="bg-slate-800 p-6 rounded-2xl border-2 border-amber-500/50">
+                    <h3 class="text-2xl font-bold text-amber-300 mb-4">FRAQUEZAS (O que precisamos melhorar)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300">
+                        <li><strong>"Fuga de Cérebros":</strong> Perda de talentos sênior para SP, MG e exterior.</li>
+                        <li><strong>Baixa Densidade de Capital:</strong> Poucos fundos de investimento (VCs) locais.</li>
+                        <li><strong>Conexão Universidade-Empresa:</strong> Pesquisa acadêmica ainda gera poucas patentes/negócios.</li>
+                        <li><strong>Mentalidade de Risco:</strong> Cultura empresarial local ainda conservadora.</li>
+                    </ul>
+                </div>
+                <!-- Oportunidades (Opportunities) -->
+                <div class="bg-slate-800 p-6 rounded-2xl border-2 border-sky-500/50">
+                    <h3 class="text-2xl font-bold text-sky-300 mb-4">OPORTUNIDADES (O que podemos aproveitar)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300">
+                        <li><strong>Liderança em AgTechs:</strong> Ser o "Vale do Silício" do Agro mundial.</li>
+                        <li><strong>Bioeconomia e Sustentabilidade:</strong> Usar a riqueza do Cerrado para criar "Deep Techs" (tecnologias complexas).</li>
+                        <li><strong>Hub de Farma/Saúde:</strong> Alavancar o polo de Anápolis para HealthTechs.</li>
+                        <li><strong>Atração de "Nômades Digitais":</strong> Custo de vida atrativo para talentos de fora.</li>
+                    </ul>
+                </div>
+                <!-- Ameaças (Threats) -->
+                <div class="bg-slate-800 p-6 rounded-2xl border-2 border-red-500/50">
+                    <h3 class="text-2xl font-bold text-red-300 mb-4">AMEAÇAS (Com o que devemos ter cuidado)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300">
+                        <li><strong>Concorrência de outros Hubs:</strong> Ecossistemas de SP, MG (San Pedro Valley) e SC (Floripa) são mais maduros.</li>
+                        <li><strong>Dependência de Commodities:</strong> Crises no Agro podem reduzir o investimento em T&I.</li>
+                        <li><strong>Infraestrutura de Conectividade:</strong> "Apagões" de internet no interior.</li>
+                        <li><strong>Mudanças Políticas:</strong> Interrupção de programas de fomento a cada 4 anos.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SEÇÃO 6: FORESIGHT & CENÁRIOS FUTUROS === -->
+        <section class="mb-12 md:mb-16">
+            <h2 class="section-title">E se...? Cenários Futuros para Goiás</h2>
+            <p class="section-subtitle">Usando metodologias de Foresight (antecipação) para explorar o que pode acontecer.</p>
+
+            <!-- === Metodologia 1: Matriz 2x2 (Cenários) === -->
+            <div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700 mb-8">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">Matriz 2x2: Os Futuros de Goiás</h3>
+                
+                <!-- Eixos da Matriz -->
+                <div class="relative flex justify-center items-center py-12 px-8">
+                    <!-- Eixo Y -->
+                    <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 transform -rotate-90">
+                        <span class="axis-label">Pessoas e Dinheiro (Talento + Capital)</span>
+                    </div>
+                    <!-- Eixo X -->
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
+                        <span class="axis-label">Nível de Colaboração (Público-Privado)</span>
+                    </div>
+
+                    <!-- Labels dos Eixos -->
+                    <span class="axis-label absolute left-0 top-1/4 -translate-x-full">ALTO</span>
+                    <span class="axis-label absolute left-0 bottom-1/4 -translate-x-full">BAIXO</span>
+                    <span class="axis-label absolute bottom-0 left-1/4 -translate-x-1/2 translate-y-full">FRAGMENTADO</span>
+                    <span class="axis-label absolute bottom-0 right-1/4 translate-x-1/2 translate-y-full">INTEGRADO</span>
+
+                    <!-- Grid da Matriz -->
+                    <div class="w-full grid grid-cols-2 grid-rows-2 gap-4 border-l-2 border-b-2 border-slate-600 matrix-grid">
+                        
+                        <!-- Q1: Guerra de Silos -->
+                        <div class="matrix-quadrant" style="grid-area: quadrant1;">
+                            <h4 class="text-cyan-300">Cenário 1: "Guerra de Silos"</h4>
+                            <p>Temos capital e talentos, mas o ecossistema é dividido. Governo, investidores e startups não colaboram. Há "briga" por talentos e desperdício de esforço.</p>
+                        </div>
+
+                        <!-- Q2: Cerrado Valley -->
+                        <div class="matrix-quadrant" style="grid-area: quadrant2;">
+                            <h4 class="text-emerald-300">Cenário 2: "Cerrado Valley" (Otimista)</h4>
+                            <p>O ecossistema ideal. Investimento flui, talentos são formados e ficam. A colaboração público-privada é forte, e Goiás vira um hub nacional em Agro e Saúde.</p>
+                        </div>
+
+                        <!-- Q3: Voo de Galinha -->
+                        <div class="matrix-quadrant" style="grid-area: quadrant3;">
+                            <h4 class="text-amber-300">Cenário 3: "Voo de Galinha" (Pessimista)</h4>
+                            <p>A "moda" passa. O investimento público seca, investidores não veem retorno. A "fuga de cérebros" piora. O ecossistema encolhe e se torna irrelevante.</p>
+                        </div>
+
+                        <!-- Q4: Oásis Planejado -->
+                        <div class="matrix-quadrant" style="grid-area: quadrant4;">
+                            <h4 class="text-sky-300">Cenário 4: "Oásis Planejado"</h4>
+                            <p>Ecossistema bem organizado (Parques Tec.), mas sem "explosão". Falta dinheiro (VC) e talentos sênior. Viramos um "celeiro" de startups que são vendidas para SP/MG, sem criar gigantes locais.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Análise Estratégica da Matriz -->
+                <div class="mt-8 pt-6 border-t border-slate-700">
+                    <div class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400">
+                        <h4 class="text-sm font-semibold text-cyan-300 mb-1 uppercase tracking-wider">Análise de Foresight (2x2)</h4>
+                        <p class="text-slate-200 text-base italic">
+                            A matriz mostra que a "Colaboração" é mais fácil de controlar do que o "Dinheiro". As políticas públicas (FAPEG/SECTI) devem focar obsessivamente em "costurar" o ecossistema para evitar a "Guerra de Silos" e atrair capital, mirando o "Cerrado Valley".
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- === Metodologia 2: Análise Causal em Camadas (CLA) === -->
+            <div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">Análise Causal (CLA): O Que Está por Trás?</h3>
+                <p class="text-slate-300 mb-6 max-w-3xl mx-auto text-center">Qual é a narrativa profunda que impede Goiás de avançar ainda mais rápido?</p>
+                
+                <div class="space-y-3">
+                    <!-- Camada 1: Litania -->
+                    <details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                        <summary class="text-lg font-semibold text-white hover:text-cyan-300">Camada 1: O que ouvimos (A Litania)</summary>
+                        <ul class="list-disc list-inside mt-3 text-slate-300 space-y-1 pl-2 accordion-content">
+                            <li>"Não temos investidores-anjo suficientes."</li>
+                            <li>"Os salários de SP/EUA levam nossos melhores talentos."</li>
+                            <li>"O 'barão do agro' não quer saber de tecnologia, só de terra."</li>
+                            <li>"Falta o governo investir mais na universidade."</li>
+                        </ul>
+                    </details>
+                    
+                    <!-- Camada 2: Causas Sistêmicas -->
+                    <details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                        <summary class="text-lg font-semibold text-white hover:text-cyan-300">Camada 2: O Sistema (As Causas)</summary>
+                        <ul class="list-disc list-inside mt-3 text-slate-300 space-y-1 pl-2 accordion-content">
+                            <li>Economia muito focada em commodities, com baixa agregação de valor.</li>
+                            <li>Políticas de inovação que mudam a cada ciclo político (4 anos).</li>
+                            <li>Mercado de investimento de risco (VC) ainda pequeno e conservador.</li>
+                        </ul>
+                    </details>
+                    
+                    <!-- Camada 3: Visão de Mundo (Cultura) -->
+                    <details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                        <summary class="text-lg font-semibold text-white hover:text-cyan-300">Camada 3: A Cultura (Visão de Mundo)</summary>
+                        <ul class="list-disc list-inside mt-3 text-slate-300 space-y-1 pl-2 accordion-content">
+                            <li>"Complexo de vira-lata": A crença de que a inovação "real" acontece no Sudeste.</li>
+                            <li>Cultura da estabilidade (concurso público) versus a cultura do risco (empreender).</li>
+                            <li>Visão do agronegócio como "tradicional" e não como um setor de biotecnologia.</li>
+                        </ul>
+                    </details>
+
+                    <!-- Camada 4: Mito e Metáfora -->
+                    <details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all" open>
+                        <summary class="text-lg font-semibold text-white hover:text-cyan-300">Camada 4: A Narrativa Profunda (Mito)</summary>
+                        <div class="mt-3 text-slate-300 space-y-3 pl-2 accordion-content">
+                            <p><strong>Metáfora Antiga:</strong> "Goiás: O Celeiro do Brasil." (Foca em produzir matéria-prima, sem criar o produto final).</p>
+                            <p class="text-cyan-300 font-semibold"><strong>Metáfora Nova (Proposta):</strong> "Goiás: O Laboratório do Cerrado." (Foca em *criar* tecnologia e propriedade intelectual usando nossas vocações).</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Análise Estratégica da CLA -->
+                <div class="mt-8 pt-6 border-t border-slate-700">
+                    <div class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400">
+                        <h4 class="text-sm font-semibold text-cyan-300 mb-1 uppercase tracking-wider">Análise de Foresight (CLA)</h4>
+                        <p class="text-slate-200 text-base italic">
+                            O CLA mostra que o maior desafio não é só dinheiro ou tecnologia, mas sim mudar a mentalidade. Precisamos nos ver como "criadores" (Laboratório) e não apenas "produtores" (Celeiro) para dar o próximo salto.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SEÇÃO 7: RECOMENDAÇÕES ESTRATÉGICAS === -->
+        <section class="mb-12 md:mb-16">
+            <h2 class="section-title">Recomendações: O Que Fazer Agora?</h2>
+            <p class="section-subtitle">Ações estratégicas baseadas na análise de dados e nos cenários futuros.</p>
+
+            <div class="space-y-4 max-w-4xl mx-auto">
+                <!-- Recomendação 1 -->
+                <details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all" open>
+                    <summary class="text-lg font-semibold text-white hover:text-cyan-300">1. Focar nas Vocações (Agro, Saúde, Logística)</summary>
+                    <div class="accordion-content text-slate-300 space-y-2">
+                        <p>Não adianta atirar para todo lado. Goiás deve dobrar a aposta onde já é forte:</p>
+                        <ul class="list-disc list-inside pl-4">
+                            <li><strong>AgTechs:</strong> Criar o maior polo de inovação em agricultura tropical do mundo.</li>
+                            <li><strong>HealthTechs:</strong> Usar o polo farmoquímico de Anápolis para criar startups de saúde.</li>
+                            <li><strong>LogTechs:</strong> Aproveitar a localização central para otimizar a logística do país.</li>
+                        </ul>
+                    </div>
+                </details>
+                
+                <!-- Recomendação 2 -->
+                <details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                    <summary class="text-lg font-semibold text-white hover:text-cyan-300">2. Missão: Reter Nossos Talentos</summary>
+                    <div class="accordion-content text-slate-300 space-y-2">
+                        <p>A "fuga de cérebros" é o maior risco. Precisamos criar programas de "Bolsa-Talento" (como o Centelha/FAPEG), conectar talentos da universidade (UFG, IFG, PUC) com startups locais e criar um ambiente (qualidade de vida + desafios) que vença a oferta de SP.</p>
+                    </div>
+                </details>
+
+                <!-- Recomendação 3 -->
+                <details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                    <summary class="text-lg font-semibold text-white hover:text-cyan-300">3. Conectar com o Mundo (Atrair Investidores)</summary>
+                    <div class="accordion-content text-slate-300 space-y-2">
+                        <p>Precisamos de mais investidores-anjo e VCs. O governo deve atuar como "diplomata", criando "pontes" e eventos que tragam fundos da Faria Lima (SP) e do exterior para conhecer as startups goianas, mostrando que "há ouro no Cerrado".</p>
+                    </div>
+                </details>
+
+                <!-- Recomendação 4 -->
+                <details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                    <summary class="text-lg font-semibold text-white hover:text-cyan-300">4. Mudar a Narrativa (Promover o "Laboratório do Cerrado")</summary>
+                    <div class="accordion-content text-slate-300 space-y-2">
+                        <p>Como vimos no CLA, a mudança precisa ser cultural. Devemos promover ativamente a nova metáfora: Goiás não é só "o celeiro" (produtor), é "O Laboratório do Cerrado" (criador de tecnologia). Isso muda a auto-estima e atrai o tipo certo de investidor e talento.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé com Autoria -->
+    <footer class="text-center mt-16 mb-8">
+        <p class="text-sm text-slate-500">
+            Elaborado por: <span class="font-semibold text-slate-400">Antonio Balduino Neto</span> - Especialista em Foresight Estratégico e Design de Futuros
+        </p>
+    </footer>
+
+    <!-- Scripts movidos para o final do body -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js"></script>
+
+    <script>
+        
+            // Registrar o plugin de rótulos de dados com verificação
+            if (typeof Chart !== 'undefined' && typeof ChartDataLabels !== 'undefined') {
+                Chart.register(ChartDataLabels);
+            } else {
+                console.error('Chart.js ou ChartDataLabels não carregou a tempo.');
+            }
+
+            // --- Lógica do Gráfico de Distribuição (Rosca) ---
+            const ctxDistribution = document.getElementById('distributionChart').getContext('2d');
+            let distributionChart;
+
+            const dataSets = {
+                total: {
+                    labels: ['AgTech', 'Health/BioTech', 'FinTech', 'LogTech', 'EdTech', 'Outros'],
+                    data: [22, 18, 15, 12, 10, 23],
+                    insightTitle: 'Análise Estratégica: Total Goiás',
+                    insightText: 'A maioria das startups ainda está na capital, o que é natural. No entanto, o gráfico mostra como o interior avança rápido, especialmente em setores ligados à vocação regional (AgTechs em Rio Verde e Logística/Saúde em Anápolis).'
+                },
+                gyn: {
+                    labels: ['FinTech', 'HealthTech', 'EdTech', 'LogTech', 'AgTech', 'Outros'],
+                    data: [25, 20, 15, 10, 5, 25],
+                    insightTitle: 'Análise: Goiânia (Polo Principal)',
+                    insightText: 'Goiânia, como capital, concentra a maior diversidade de setores, com destaque para FinTechs (serviços) e HealthTechs. É o "caldeirão" principal do ecossistema.'
+                },
+                aps: {
+                    labels: ['Health/BioTech', 'LogTech', 'Indústria 4.0', 'AgTech', 'Outros'],
+                    data: [35, 30, 15, 5, 15],
+                    insightTitle: 'Análise: Anápolis (Polo Farma/Log)',
+                    insightText: 'Anápolis reflete sua vocação econômica: é o líder absoluto em HealthTechs (ligado ao polo farmoquímico) e LogTechs (ligado ao Porto Seco e à sua posição geográfica).'
+                },
+                rv: {
+                    labels: ['AgTech', 'FinTech (Agro)', 'LogTech (Agro)', 'Outros'],
+                    data: [60, 15, 10, 15],
+                    insightTitle: 'Análise: Rio Verde (Polo AgTech)',
+                    insightText: 'Rio Verde é a capital nacional da AgTech. Quase dois terços das startups locais estão diretamente ligadas ao agronegócio, da biotecnologia a softwares de gestão.'
+                }
+            };
+
+            const chartConfig = {
+                type: 'doughnut',
+                plugins: [ChartDataLabels],
+                data: {
+                    labels: dataSets.total.labels,
+                    datasets: [{
+                        label: 'Distribuição Setorial',
+                        data: dataSets.total.data,
+                        backgroundColor: [
+                            'rgba(5, 150, 105, 0.7)', // emerald
+                            'rgba(34, 211, 238, 0.7)', // cyan
+                            'rgba(245, 158, 11, 0.7)', // amber
+                            'rgba(59, 130, 246, 0.7)', // blue
+                            'rgba(168, 85, 247, 0.7)', // purple
+                            'rgba(100, 116, 139, 0.7)' // slate
+                        ],
+                        borderColor: '#0F172A', // slate-900
+                        borderWidth: 3,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        datalabels: {
+                            formatter: (value, ctx) => {
+                                return value + '%'; // Formata como porcentagem
+                            },
+                            color: '#FFFFFF',
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            }
+                        },
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                color: '#E2E8F0', // slate-200
+                                font: {
+                                    size: 14,
+                                    family: 'Inter'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            if (ctxDistribution) {
+                distributionChart = new Chart(ctxDistribution, chartConfig);
+            }
+
+            // Função para atualizar o gráfico de rosca
+            function updateDistributionChart(filter) {
+                if (!distributionChart) return;
+                const newData = dataSets[filter];
+                distributionChart.data.labels = newData.labels;
+                distributionChart.data.datasets[0].data = newData.data;
+                distributionChart.update();
+
+                // Atualizar insight
+                document.getElementById('insight-title').innerText = newData.insightTitle;
+                document.getElementById('insight-text').innerText = newData.insightText;
+
+                // Atualizar botões
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('filter-btn-active');
+                    btn.classList.add('filter-btn-inactive');
+                });
+                document.getElementById(`btn-${filter}`).classList.add('filter-btn-active');
+                document.getElementById(`btn-${filter}`).classList.remove('filter-btn-inactive');
+            }
+
+            // Event Listeners dos Botões
+            document.getElementById('btn-total')?.addEventListener('click', () => updateDistributionChart('total'));
+            document.getElementById('btn-gyn')?.addEventListener('click', () => updateDistributionChart('gyn'));
+            document.getElementById('btn-aps')?.addEventListener('click', () => updateDistributionChart('aps'));
+            document.getElementById('btn-rv')?.addEventListener('click', () => updateDistributionChart('rv'));
+
+            // --- Lógica do Gráfico de Investimento (Barras) ---
+            const ctxInvestment = document.getElementById('investmentChart')?.getContext('2d');
+            
+            const infoDefault = document.getElementById('info-default');
+            const infoPublico = document.getElementById('info-publico');
+            const infoPrivado = document.getElementById('info-privado');
+
+            function showInfo(type) {
+                infoDefault?.classList.add('hidden');
+                infoPublico?.classList.add('hidden');
+                infoPrivado?.classList.add('hidden');
+
+                if (type === 'publico') {
+                    infoPublico?.classList.remove('hidden');
+                } else if (type === 'privado') {
+                    infoPrivado?.classList.remove('hidden');
+                } else {
+                    infoDefault?.classList.remove('hidden'); // Default
+                }
+            }
+
+            function handleChartClick(e, elements) {
+                if (elements.length > 0) {
+                    const datasetIndex = elements[0].datasetIndex;
+                    if (datasetIndex === 0) {
+                        showInfo('publico'); // Índice 0 = Público
+                    } else if (datasetIndex === 1) {
+                        showInfo('privado'); // Índice 1 = Privado
+                    }
+                } else {
+                    showInfo('default');
+                }
+            }
+            
+            if (ctxInvestment) {
+                const investmentChart = new Chart(ctxInvestment, {
+                    type: 'bar',
+                    plugins: [ChartDataLabels],
+                    data: {
+                        labels: ['2020', '2021', '2022', '2023', '2024 (Proj.)'],
+                        datasets: [
+                            {
+                                label: 'Investimento Público (Fomento/Editais)',
+                                data: [15, 25, 40, 50, 70], // Em R$ milhões
+                                backgroundColor: 'rgba(34, 211, 238, 0.7)', // cyan-400
+                                borderColor: 'rgba(34, 211, 238, 1)',
+                                borderWidth: 2
+                            },
+                            {
+                                label: 'Investimento Privado (Anjo/VC)',
+                                data: [30, 70, 60, 110, 150], // Em R$ milhões
+                                backgroundColor: 'rgba(16, 185, 129, 0.7)', // emerald-500
+                                borderColor: 'rgba(16, 185, 129, 1)',
+                                borderWidth: 2
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        onClick: handleChartClick,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    color: '#94A3B8', // slate-400
+                                    callback: function(value) {
+                                        return 'R$ ' + value + 'M';
+                                    }
+                                },
+                                grid: {
+                                    color: '#334155' // slate-700
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    color: '#94A3B8' // slate-400
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            datalabels: {
+                                color: '#E2E8F0', // slate-200
+                                anchor: 'end', 
+                                align: 'top',
+                                offset: 4, 
+                                font: {
+                                    weight: '600',
+                                    size: 10
+                                },
+                                formatter: (value) => {
+                                    return 'R$' + value + 'M';
+                                }
+                            },
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    color: '#E2E8F0',
+                                    font: {
+                                        size: 14,
+                                        family: 'Inter'
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.dataset.label}: R$ ${context.raw} Milhões`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            showInfo('default');
+
+            
+            // --- Lógica do Gráfico de Ranking (Barras Horizontais) ---
+            const ctxRanking = document.getElementById('rankingChart')?.getContext('2d');
+            
+            if (ctxRanking) {
+                const rankingLabels = ['SP', 'SC', 'DF', 'RS', 'PR', 'RJ', 'MG', 'ES', 'AM', 'GO', 'PE', 'CE', 'MS', 'BA', 'MT'];
+                // Dados fictícios de pontuação (0-100) para ilustração
+                const rankingData = [95.5, 89.2, 85.1, 80.3, 79.5, 75.0, 72.1, 68.9, 65.0, 62.3, 58.0, 55.1, 52.4, 50.1, 48.8];
+                
+                const rankingColors = rankingLabels.map(label => 
+                    label === 'GO' ? 'rgba(34, 211, 238, 0.7)' : 'rgba(71, 85, 105, 0.7)' // Cyan para GO, Slate para outros
+                );
+                const rankingBorderColors = rankingLabels.map(label => 
+                    label === 'GO' ? 'rgba(34, 211, 238, 1)' : 'rgba(71, 85, 105, 1)'
+                );
+
+                new Chart(ctxRanking, {
+                    type: 'bar',
+                    plugins: [ChartDataLabels],
+                    data: {
+                        labels: rankingLabels,
+                        datasets: [{
+                            label: 'Pontuação Inovação',
+                            data: rankingData,
+                            backgroundColor: rankingColors,
+                            borderColor: rankingBorderColors,
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y', // <-- Torna o gráfico de barras horizontal
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                ticks: { 
+                                    color: '#94A3B8', // slate-400
+                                    callback: (value) => value + ' pts'
+                                },
+                                grid: { color: '#334155' } // slate-700
+                            },
+                            y: {
+                                ticks: { 
+                                    color: '#E2E8F0', // slate-200
+                                    font: { size: 10 } 
+                                },
+                                grid: { display: false }
+                            }
+                        },
+                        plugins: {
+                            datalabels: {
+                                color: '#E2E8F0',
+                                anchor: 'end',
+                                align: 'right', 
+                                formatter: (value) => value.toFixed(1), 
+                                font: { size: 10, weight: '600' }
+                            },
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: (context) => ` ${context.label}: ${context.raw.toFixed(1)} pontos`
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+    </script>
+</body>
+</html>
+
