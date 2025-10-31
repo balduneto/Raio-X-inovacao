@@ -169,8 +169,10 @@
 </head>
 <body class="bg-slate-900 text-slate-200 p-4 md:p-8">
 
-    <!-- Cabeçalho -->
-    <header class="text-center mb-16 mt-8">
+    <!-- Cabeçalho --><header class="text-center mb-16 mt-8">
+        <!-- ADICIONADO: Logomarca --><div class="mb-6">
+            <img src="https://i.postimg.cc/bNyzBkh8/gti.png" alt="Logomarca G&TI" class="mx-auto h-14 w-auto"> <!-- Altura reduzida em 30% (de h-20 para h-14) --></div>
+        
         <h1 class="text-4xl md:text-6xl font-black text-white mb-4">
             Raio-X da Tecnologia e Inovação em Goiás
         </h1>
@@ -181,13 +183,11 @@
 
     <main class="max-w-7xl mx-auto">
 
-        <!-- === SEÇÃO 1: GOIÁS EM NÚMEROS === -->
-        <section class="mb-12 md:mb-16">
+        <!-- === SEÇÃO 1: GOIÁS EM NÚMEROS === --><section class="mb-12 md:mb-16">
             <h2 class="section-title">Goiás em Números: Onde Estamos?</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 
-                <!-- Card 1: Startups -->
-                <div class="stat-card">
+                <!-- Card 1: Startups --><div class="stat-card">
                     <div>
                         <div class="stat-number">300+</div>
                         <div class="stat-label">Startups Ativas (Validadas)</div>
@@ -198,8 +198,7 @@
                     </div>
                 </div>
 
-                <!-- Card 2: Faturamento -->
-                <div class="stat-card">
+                <!-- Card 2: Faturamento --><div class="stat-card">
                     <div>
                         <div class="stat-number">R$ 2,5 Bi</div>
                         <div class="stat-label">Faturamento do Setor (Estimado)</div>
@@ -210,15 +209,13 @@
                     </div>
                 </div>
 
-                <!-- Card 3: Parques Tecnológicos -->
-                <div class="stat-card">
+                <!-- Card 3: Parques Tecnológicos --><div class="stat-card">
                     <div>
                         <div class="stat-number">5</div>
                         <div class="stat-label">Parques Tecnológicos (Em Implantação)</div>
                         <div class="stat-source">Fonte: Secretaria de C,T&I (SECTI Goiás) | Período: 2024</div>
                         
-                        <!-- MODIFICADO: Lista dos Parques (Accordion) com mais detalhes -->
-                        <details class="accordion-item bg-slate-900/50 rounded-lg mt-4 text-sm open:ring-1 open:ring-cyan-400 transition-all">
+                        <!-- Lista dos Parques (Accordion) com mais detalhes --><details class="accordion-item bg-slate-900/50 rounded-lg mt-4 text-sm open:ring-1 open:ring-cyan-400 transition-all">
                             <summary class="text-sm font-semibold text-white hover:text-cyan-300">Quais são os 5 Polos?</summary>
                             <ul class="text-slate-300 space-y-2 accordion-content text-xs">
                                 <li>
@@ -238,16 +235,13 @@
                                 </li>
                             </ul>
                         </details>
-                        <!-- Fim da Modificação -->
-
-                    </div>
+                        <!-- Fim da Modificação --></div>
                     <div class="stat-insight">
                         <strong>Insight:</strong> Os Parques são a "casa" da inovação. Concluí-los é vital para conectar universidades, empresas e atrair talentos.
                     </div>
                 </div>
 
-                <!-- Card 4: AgTechs -->
-                <div class="stat-card">
+                <!-- Card 4: AgTechs --><div class="stat-card">
                     <div>
                         <div class="stat-number">1º</div>
                         <div class="stat-label">Lugar Nacional em AgTechs (Proporcional)</div>
@@ -260,14 +254,12 @@
             </div>
         </section>
 
-        <!-- === SEÇÃO 2: POSICIONAMENTO NO RADAR === -->
-        <section class="mb-12 md:mb-16">
+        <!-- === SEÇÃO 2: POSICIONAMENTO NO RADAR === --><section class="mb-12 md:mb-16">
             <h2 class="section-title">Goiás no Mapa da Inovação do Brasil</h2>
             <div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                     
-                    <!-- Coluna 1: O Ranking -->
-                    <div class="md:col-span-1 text-center md:text-left">
+                    <!-- Coluna 1: O Ranking --><div class="md:col-span-1 text-center md:text-left">
                         <div class="inline-block bg-cyan-500/10 p-4 rounded-xl">
                             <div class="text-6xl md:text-7xl font-extrabold text-cyan-400">10ª</div>
                         </div>
@@ -277,8 +269,7 @@
                         </div>
                     </div>
 
-                    <!-- Coluna 2: Critérios -->
-                    <div class="md:col-span-2">
+                    <!-- Coluna 2: Critérios --><div class="md:col-span-2">
                         <h3 class="text-xl font-semibold text-white mb-3">O que define a posição no Ranking?</h3>
                         <ul class="list-disc list-inside space-y-2 text-slate-300">
                             <li><strong>Capacidade de Inovação:</strong> Investimento em Pesquisa (P&D), número de Startups.</li>
@@ -289,8 +280,7 @@
                     </div>
                 </div>
 
-                <!-- Gráfico Top 15 Estados -->
-                <div class="mt-8 pt-6 border-t border-slate-700">
+                <!-- Gráfico Top 15 Estados --><div class="mt-8 pt-6 border-t border-slate-700">
                     <h3 class="text-xl font-semibold text-white mb-4 text-center">Top 15 Estados no Pilar "Inovação"</h3>
                     <div class="h-96 w-full">
                         <canvas id="rankingChart"></canvas>
@@ -300,8 +290,7 @@
                     </p>
                 </div>
 
-                <!-- Análise Estratégica -->
-                <div class="mt-8 pt-6 border-t border-slate-700">
+                <!-- Análise Estratégica --><div class="mt-8 pt-6 border-t border-slate-700">
                     <div class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400">
                         <h4 class="text-sm font-semibold text-cyan-300 mb-1 uppercase tracking-wider">Análise Estratégica</h4>
                         <p id="insightRanking" class="text-slate-200 text-base italic">
@@ -312,33 +301,27 @@
             </div>
         </section>
 
-        <!-- === SEÇÃO 3: DISTRIBUIÇÃO INTERATIVA DO ECOSSISTEMA === -->
-        <section class="mb-12 md:mb-16">
+        <!-- === SEÇÃO 3: DISTRIBUIÇÃO INTERATIVA DO ECOSSISTEMA === --><section class="mb-12 md:mb-16">
             <h2 class="section-title">Onde Estão as Startups? (Mapa Interativo)</h2>
             <div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700">
-                <!-- Filtros Interativos -->
-                <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <!-- Filtros Interativos --><div class="flex flex-wrap justify-center gap-3 mb-8">
                     <button id="btn-total" class="filter-btn filter-btn-active">Total Goiás</button>
                     <button id="btn-gyn" class="filter-btn filter-btn-inactive">Goiânia</button>
                     <button id="btn-aps" class="filter-btn filter-btn-inactive">Anápolis</button>
                     <button id="btn-rv" class="filter-btn filter-btn-inactive">Rio Verde</button>
                 </div>
 
-                <!-- Gráfico e Insight -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <!-- Gráfico de Rosca -->
-                    <div>
+                <!-- Gráfico e Insight --><div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Gráfico de Rosca --><div>
                         <div class="h-80 w-full">
                             <canvas id="distributionChart"></canvas>
                         </div>
-                        <!-- Legenda Explicativa -->
-                        <p class="text-sm text-slate-400 text-center mt-4">
+                        <!-- Legenda Explicativa --><p class="text-sm text-slate-400 text-center mt-4">
                             <strong>Legenda:</strong> O gráfico mostra a % de startups por setor. Use os filtros acima para ver a especialização de cada polo.
                         </p>
                     </div>
 
-                    <!-- Insight Dinâmico -->
-                    <div class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400">
+                    <!-- Insight Dinâmico --><div class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400">
                         <h4 id="insight-title" class="text-sm font-semibold text-cyan-300 mb-1 uppercase tracking-wider">Análise Estratégica: Total Goiás</h4>
                         <p id="insight-text" class="text-slate-200 text-base italic">
                             A maioria das startups ainda está na capital, o que é natural. No entanto, o gráfico mostra como o interior avança rápido, especialmente em setores ligados à vocação regional (AgTechs em Rio Verde e Logística/Saúde em Anápolis).
@@ -349,30 +332,25 @@
             </div>
         </section>
 
-        <!-- === SEÇÃO 4: O MOTOR DE INVESTIMENTO === -->
-        <section class="mb-12 md:mb-16">
+        <!-- === SEÇÃO 4: O MOTOR DE INVESTIMENTO === --><section class="mb-12 md:mb-16">
             <h2 class="section-title">Quem Financia a Inovação? (Investimento)</h2>
             <div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700">
                 <div class="h-96 w-full">
                     <canvas id="investmentChart"></canvas>
                 </div>
-                <!-- Legenda Explicativa -->
-                <p class="text-sm text-slate-400 text-center mt-6">
+                <!-- Legenda Explicativa --><p class="text-sm text-slate-400 text-center mt-6">
                     <strong>Legenda:</strong> O gráfico compara o crescimento do investimento público (fomento) vs. privado (risco) em T&I em Goiás. Valores em Milhões de R$.
                 </p>
 
-                <!-- Seção Interativa de Fontes de Financiamento -->
-                <div class="mt-6 pt-6 border-t border-slate-700">
-                    <!-- Card Padrão -->
-                    <div id="info-default" class="p-4 bg-slate-900 rounded-lg border-l-4 border-slate-500">
+                <!-- Seção Interativa de Fontes de Financiamento --><div class="mt-6 pt-6 border-t border-slate-700">
+                    <!-- Card Padrão --><div id="info-default" class="p-4 bg-slate-900 rounded-lg border-l-4 border-slate-500">
                         <h4 class="text-sm font-semibold text-slate-300 mb-1 uppercase tracking-wider">Clique nas Barras</h4>
                         <p class="text-slate-200 text-base italic">
                             Clique em uma das barras (Pública ou Privada) no gráfico acima para ver as principais fontes de financiamento de cada categoria.
                         </p>
                     </div>
 
-                    <!-- Card Investimento Público (Oculto) -->
-                    <div id="info-publico" class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400 hidden">
+                    <!-- Card Investimento Público (Oculto) --><div id="info-publico" class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400 hidden">
                         <h4 class="text-sm font-semibold text-cyan-300 mb-2 uppercase tracking-wider">Principais Fontes: Investimento Público</h4>
                         <ul class="list-disc list-inside text-slate-300 space-y-1">
                             <li><strong>FAPEG (Fundação de Amparo à Pesquisa):</strong> Principal agência de fomento, com editais (Centelha, Tecnova) para P&D e startups.</li>
@@ -382,8 +360,7 @@
                         </ul>
                     </div>
 
-                    <!-- Card Investimento Privado (Oculto) -->
-                    <div id="info-privado" class="p-4 bg-slate-900 rounded-lg border-l-4 border-emerald-400 hidden">
+                    <!-- Card Investimento Privado (Oculto) --><div id="info-privado" class="p-4 bg-slate-900 rounded-lg border-l-4 border-emerald-400 hidden">
                         <h4 class="text-sm font-semibold text-emerald-300 mb-2 uppercase tracking-wider">Principais Fontes: Investimento Privado</h4>
                         <ul class="list-disc list-inside text-slate-300 space-y-1">
                             <li><strong>Investidores-Anjo:</strong> Pessoas físicas que investem capital semente (ex: Anjos do Brasil - GO).</li>
@@ -394,8 +371,7 @@
                     </div>
                 </div>
 
-                <!-- Insight Estratégico (Original) -->
-                <div class="mt-6 pt-6 border-t border-slate-700">
+                <!-- Insight Estratégico (Original) --><div class="mt-6 pt-6 border-t border-slate-700">
                     <div class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400">
                         <h4 class="text-sm font-semibold text-cyan-300 mb-1 uppercase tracking-wider">Análise Estratégica</h4>
                         <p class="text-slate-200 text-base italic">
@@ -407,12 +383,10 @@
             </div>
         </section>
 
-        <!-- === SEÇÃO 5: DESAFIOS & OPORTUNIDADES (SWOT) === -->
-        <section class="mb-12 md:mb-16">
+        <!-- === SEÇÃO 5: DESAFIOS & OPORTUNIDADES (SWOT) === --><section class="mb-12 md:mb-16">
             <h2 class="section-title">Desafios & Oportunidades (Análise SWOT)</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                <!-- Forças (Strengths) -->
-                <div class="bg-slate-800 p-6 rounded-2xl border-2 border-emerald-500/50">
+                <!-- Forças (Strengths) --><div class="bg-slate-800 p-6 rounded-2xl border-2 border-emerald-500/50">
                     <h3 class="text-2xl font-bold text-emerald-300 mb-4">FORÇAS (O que temos de bom)</h3>
                     <ul class="list-disc list-inside space-y-2 text-slate-300">
                         <li><strong>Vocação Econômica Clara:</strong> Potência em Agro, Saúde (Farma) e Logística.</li>
@@ -421,8 +395,7 @@
                         <li><strong>Ecossistema em Expansão:</strong> Aumento rápido no número de startups e eventos.</li>
                     </ul>
                 </div>
-                <!-- Fraquezas (Weaknesses) -->
-                <div class="bg-slate-800 p-6 rounded-2xl border-2 border-amber-500/50">
+                <!-- Fraquezas (Weaknesses) --><div class="bg-slate-800 p-6 rounded-2xl border-2 border-amber-500/50">
                     <h3 class="text-2xl font-bold text-amber-300 mb-4">FRAQUEZAS (O que precisamos melhorar)</h3>
                     <ul class="list-disc list-inside space-y-2 text-slate-300">
                         <li><strong>"Fuga de Cérebros":</strong> Perda de talentos sênior para SP, MG e exterior.</li>
@@ -431,8 +404,7 @@
                         <li><strong>Mentalidade de Risco:</strong> Cultura empresarial local ainda conservadora.</li>
                     </ul>
                 </div>
-                <!-- Oportunidades (Opportunities) -->
-                <div class="bg-slate-800 p-6 rounded-2xl border-2 border-sky-500/50">
+                <!-- Oportunidades (Opportunities) --><div class="bg-slate-800 p-6 rounded-2xl border-2 border-sky-500/50">
                     <h3 class="text-2xl font-bold text-sky-300 mb-4">OPORTUNIDADES (O que podemos aproveitar)</h3>
                     <ul class="list-disc list-inside space-y-2 text-slate-300">
                         <li><strong>Liderança em AgTechs:</strong> Ser o "Vale do Silício" do Agro mundial.</li>
@@ -441,8 +413,7 @@
                         <li><strong>Atração de "Nômades Digitais":</strong> Custo de vida atrativo para talentos de fora.</li>
                     </ul>
                 </div>
-                <!-- Ameaças (Threats) -->
-                <div class="bg-slate-800 p-6 rounded-2xl border-2 border-red-500/50">
+                <!-- Ameaças (Threats) --><div class="bg-slate-800 p-6 rounded-2xl border-2 border-red-500/50">
                     <h3 class="text-2xl font-bold text-red-300 mb-4">AMEAÇAS (Com o que devemos ter cuidado)</h3>
                     <ul class="list-disc list-inside space-y-2 text-slate-300">
                         <li><strong>Concorrência de outros Hubs:</strong> Ecossistemas de SP, MG (San Pedro Valley) e SC (Floripa) são mais maduros.</li>
@@ -454,63 +425,51 @@
             </div>
         </section>
 
-        <!-- === SEÇÃO 6: FORESIGHT & CENÁRIOS FUTUROS === -->
-        <section class="mb-12 md:mb-16">
+        <!-- === SEÇÃO 6: FORESIGHT & CENÁRIOS FUTUROS === --><section class="mb-12 md:mb-16">
             <h2 class="section-title">E se...? Cenários Futuros para Goiás</h2>
             <p class="section-subtitle">Usando metodologias de Foresight (antecipação) para explorar o que pode acontecer.</p>
 
-            <!-- === Metodologia 1: Matriz 2x2 (Cenários) === -->
-            <div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700 mb-8">
+            <!-- === Metodologia 1: Matriz 2x2 (Cenários) === --><div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700 mb-8">
                 <h3 class="text-2xl font-bold text-white mb-6 text-center">Matriz 2x2: Os Futuros de Goiás</h3>
                 
-                <!-- Eixos da Matriz -->
-                <div class="relative flex justify-center items-center py-12 px-8">
-                    <!-- Eixo Y -->
-                    <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 transform -rotate-90">
+                <!-- Eixos da Matriz --><div class="relative flex justify-center items-center py-12 px-8">
+                    <!-- Eixo Y --><div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 transform -rotate-90">
                         <span class="axis-label">Pessoas e Dinheiro (Talento + Capital)</span>
                     </div>
-                    <!-- Eixo X -->
-                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
+                    <!-- Eixo X --><div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
                         <span class="axis-label">Nível de Colaboração (Público-Privado)</span>
                     </div>
 
-                    <!-- Labels dos Eixos -->
-                    <span class="axis-label absolute left-0 top-1/4 -translate-x-full">ALTO</span>
+                    <!-- Labels dos Eixos --><span class="axis-label absolute left-0 top-1/4 -translate-x-full">ALTO</span>
                     <span class="axis-label absolute left-0 bottom-1/4 -translate-x-full">BAIXO</span>
                     <span class="axis-label absolute bottom-0 left-1/4 -translate-x-1/2 translate-y-full">FRAGMENTADO</span>
                     <span class="axis-label absolute bottom-0 right-1/4 translate-x-1/2 translate-y-full">INTEGRADO</span>
 
-                    <!-- Grid da Matriz -->
-                    <div class="w-full grid grid-cols-2 grid-rows-2 gap-4 border-l-2 border-b-2 border-slate-600 matrix-grid">
+                    <!-- Grid da Matriz --><div class="w-full grid grid-cols-2 grid-rows-2 gap-4 border-l-2 border-b-2 border-slate-600 matrix-grid">
                         
-                        <!-- Q1: Guerra de Silos -->
-                        <div class="matrix-quadrant" style="grid-area: quadrant1;">
+                        <!-- Q1: Guerra de Silos --><div class="matrix-quadrant" style="grid-area: quadrant1;">
                             <h4 class="text-cyan-300">Cenário 1: "Guerra de Silos"</h4>
                             <p>Temos capital e talentos, mas o ecossistema é dividido. Governo, investidores e startups não colaboram. Há "briga" por talentos e desperdício de esforço.</p>
                         </div>
 
-                        <!-- Q2: Cerrado Valley -->
-                        <div class="matrix-quadrant" style="grid-area: quadrant2;">
+                        <!-- Q2: Cerrado Valley --><div class="matrix-quadrant" style="grid-area: quadrant2;">
                             <h4 class="text-emerald-300">Cenário 2: "Cerrado Valley" (Otimista)</h4>
                             <p>O ecossistema ideal. Investimento flui, talentos são formados e ficam. A colaboração público-privada é forte, e Goiás vira um hub nacional em Agro e Saúde.</p>
                         </div>
 
-                        <!-- Q3: Voo de Galinha -->
-                        <div class="matrix-quadrant" style="grid-area: quadrant3;">
+                        <!-- Q3: Voo de Galinha --><div class="matrix-quadrant" style="grid-area: quadrant3;">
                             <h4 class="text-amber-300">Cenário 3: "Voo de Galinha" (Pessimista)</h4>
                             <p>A "moda" passa. O investimento público seca, investidores não veem retorno. A "fuga de cérebros" piora. O ecossistema encolhe e se torna irrelevante.</p>
                         </div>
 
-                        <!-- Q4: Oásis Planejado -->
-                        <div class="matrix-quadrant" style="grid-area: quadrant4;">
+                        <!-- Q4: Oásis Planejado --><div class="matrix-quadrant" style="grid-area: quadrant4;">
                             <h4 class="text-sky-300">Cenário 4: "Oásis Planejado"</h4>
                             <p>Ecossistema bem organizado (Parques Tec.), mas sem "explosão". Falta dinheiro (VC) e talentos sênior. Viramos um "celeiro" de startups que são vendidas para SP/MG, sem criar gigantes locais.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Análise Estratégica da Matriz -->
-                <div class="mt-8 pt-6 border-t border-slate-700">
+                <!-- Análise Estratégica da Matriz --><div class="mt-8 pt-6 border-t border-slate-700">
                     <div class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400">
                         <h4 class="text-sm font-semibold text-cyan-300 mb-1 uppercase tracking-wider">Análise de Foresight (2x2)</h4>
                         <p class="text-slate-200 text-base italic">
@@ -520,14 +479,12 @@
                 </div>
             </div>
 
-            <!-- === Metodologia 2: Análise Causal em Camadas (CLA) === -->
-            <div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700">
+            <!-- === Metodologia 2: Análise Causal em Camadas (CLA) === --><div class="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-700">
                 <h3 class="text-2xl font-bold text-white mb-6 text-center">Análise Causal (CLA): O Que Está por Trás?</h3>
                 <p class="text-slate-300 mb-6 max-w-3xl mx-auto text-center">Qual é a narrativa profunda que impede Goiás de avançar ainda mais rápido?</p>
                 
                 <div class="space-y-3">
-                    <!-- Camada 1: Litania -->
-                    <details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                    <!-- Camada 1: Litania --><details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
                         <summary class="text-lg font-semibold text-white hover:text-cyan-300">Camada 1: O que ouvimos (A Litania)</summary>
                         <ul class="list-disc list-inside mt-3 text-slate-300 space-y-1 pl-2 accordion-content">
                             <li>"Não temos investidores-anjo suficientes."</li>
@@ -537,8 +494,7 @@
                         </ul>
                     </details>
                     
-                    <!-- Camada 2: Causas Sistêmicas -->
-                    <details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                    <!-- Camada 2: Causas Sistêmicas --><details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
                         <summary class="text-lg font-semibold text-white hover:text-cyan-300">Camada 2: O Sistema (As Causas)</summary>
                         <ul class="list-disc list-inside mt-3 text-slate-300 space-y-1 pl-2 accordion-content">
                             <li>Economia muito focada em commodities, com baixa agregação de valor.</li>
@@ -547,8 +503,7 @@
                         </ul>
                     </details>
                     
-                    <!-- Camada 3: Visão de Mundo (Cultura) -->
-                    <details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                    <!-- Camada 3: Visão de Mundo (Cultura) --><details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
                         <summary class="text-lg font-semibold text-white hover:text-cyan-300">Camada 3: A Cultura (Visão de Mundo)</summary>
                         <ul class="list-disc list-inside mt-3 text-slate-300 space-y-1 pl-2 accordion-content">
                             <li>"Complexo de vira-lata": A crença de que a inovação "real" acontece no Sudeste.</li>
@@ -557,8 +512,7 @@
                         </ul>
                     </details>
 
-                    <!-- Camada 4: Mito e Metáfora -->
-                    <details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all" open>
+                    <!-- Camada 4: Mito e Metáfora --><details class="accordion-item bg-slate-900/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all" open>
                         <summary class="text-lg font-semibold text-white hover:text-cyan-300">Camada 4: A Narrativa Profunda (Mito)</summary>
                         <div class="mt-3 text-slate-300 space-y-3 pl-2 accordion-content">
                             <p><strong>Metáfora Antiga:</strong> "Goiás: O Celeiro do Brasil." (Foca em produzir matéria-prima, sem criar o produto final).</p>
@@ -567,8 +521,7 @@
                     </details>
                 </div>
 
-                <!-- Análise Estratégica da CLA -->
-                <div class="mt-8 pt-6 border-t border-slate-700">
+                <!-- Análise Estratégica da CLA --><div class="mt-8 pt-6 border-t border-slate-700">
                     <div class="p-4 bg-slate-900 rounded-lg border-l-4 border-cyan-400">
                         <h4 class="text-sm font-semibold text-cyan-300 mb-1 uppercase tracking-wider">Análise de Foresight (CLA)</h4>
                         <p class="text-slate-200 text-base italic">
@@ -579,14 +532,12 @@
             </div>
         </section>
 
-        <!-- === SEÇÃO 7: RECOMENDAÇÕES ESTRATÉGICAS === -->
-        <section class="mb-12 md:mb-16">
+        <!-- === SEÇÃO 7: RECOMENDAÇÕES ESTRATÉGICAS === --><section class="mb-12 md:mb-16">
             <h2 class="section-title">Recomendações: O Que Fazer Agora?</h2>
             <p class="section-subtitle">Ações estratégicas baseadas na análise de dados e nos cenários futuros.</p>
 
             <div class="space-y-4 max-w-4xl mx-auto">
-                <!-- Recomendação 1 -->
-                <details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all" open>
+                <!-- Recomendação 1 --><details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all" open>
                     <summary class="text-lg font-semibold text-white hover:text-cyan-300">1. Focar nas Vocações (Agro, Saúde, Logística)</summary>
                     <div class="accordion-content text-slate-300 space-y-2">
                         <p>Não adianta atirar para todo lado. Goiás deve dobrar a aposta onde já é forte:</p>
@@ -598,24 +549,21 @@
                     </div>
                 </details>
                 
-                <!-- Recomendação 2 -->
-                <details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                <!-- Recomendação 2 --><details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
                     <summary class="text-lg font-semibold text-white hover:text-cyan-300">2. Missão: Reter Nossos Talentos</summary>
                     <div class="accordion-content text-slate-300 space-y-2">
                         <p>A "fuga de cérebros" é o maior risco. Precisamos criar programas de "Bolsa-Talento" (como o Centelha/FAPEG), conectar talentos da universidade (UFG, IFG, PUC) com startups locais e criar um ambiente (qualidade de vida + desafios) que vença a oferta de SP.</p>
                     </div>
                 </details>
 
-                <!-- Recomendação 3 -->
-                <details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                <!-- Recomendação 3 --><details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
                     <summary class="text-lg font-semibold text-white hover:text-cyan-300">3. Conectar com o Mundo (Atrair Investidores)</summary>
                     <div class="accordion-content text-slate-300 space-y-2">
                         <p>Precisamos de mais investidores-anjo e VCs. O governo deve atuar como "diplomata", criando "pontes" e eventos que tragam fundos da Faria Lima (SP) e do exterior para conhecer as startups goianas, mostrando que "há ouro no Cerrado".</p>
                     </div>
                 </details>
 
-                <!-- Recomendação 4 -->
-                <details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
+                <!-- Recomendação 4 --><details class="accordion-item bg-slate-800/50 rounded-lg open:ring-1 open:ring-cyan-400 transition-all">
                     <summary class="text-lg font-semibold text-white hover:text-cyan-300">4. Mudar a Narrativa (Promover o "Laboratório do Cerrado")</summary>
                     <div class="accordion-content text-slate-300 space-y-2">
                         <p>Como vimos no CLA, a mudança precisa ser cultural. Devemos promover ativamente a nova metáfora: Goiás não é só "o celeiro" (produtor), é "O Laboratório do Cerrado" (criador de tecnologia). Isso muda a auto-estima e atrai o tipo certo de investidor e talento.</p>
@@ -626,15 +574,13 @@
 
     </main>
 
-    <!-- Rodapé com Autoria -->
-    <footer class="text-center mt-16 mb-8">
+    <!-- Rodapé com Autoria --><footer class="text-center mt-16 mb-8">
         <p class="text-sm text-slate-500">
             Elaborado por: <span class="font-semibold text-slate-400">Antonio Balduino Neto</span> - Especialista em Foresight Estratégico e Design de Futuros
         </p>
     </footer>
 
-    <!-- Scripts movidos para o final do body -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <!-- Scripts movidos para o final do body --><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js"></script>
 
     <script>
